@@ -1,0 +1,7 @@
+body{
+    background-image: linear-gradient(blue, white);
+}
+canvas{
+    border: solid white 5px;
+    
+}
