@@ -5,7 +5,7 @@ var numFood = 10;
 var a = [1,2,3];
 
 function setup(){
-    createCanvas(1150,800);
+    createCanvas(740,480);
     pan = new panda();
     
      for(var i = 0; i < numFood; i++) {
@@ -14,7 +14,7 @@ function setup(){
 }
 
 function draw(){
-    background('blue');
+    background(0,0,255);
     pan.display();
     
     for(var i = 0; i < feed.length; i++) {
