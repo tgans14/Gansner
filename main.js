@@ -1,11 +1,15 @@
 var pan;
 var feed = []; 
 var numFood = 10;
-
+var head = 200;
+var face = 255;
+var face2 = 255;
+var face1 = 255;
 var a = [1,2,3];
-
+var eyes = ('white');
+var score = 0;
 function setup(){
-    createCanvas(740,480);
+    createCanvas(windowWidth,windowHeight);
     pan = new panda();
     
      for(var i = 0; i < numFood; i++) {
@@ -20,6 +24,19 @@ function draw(){
     for(var i = 0; i < feed.length; i++) {
         feed[i].display();
     }
+    if(head == 300){
+        face = 50;
+        face1 = 154;
+        face2 = 205;
+    }
+    if(head == 310){
+        eyes = ('black');
+        head = 200;
+        score = "zombie panda";
+    }
+    fill(90);
+    textSize(40);
+    text(score,100,100);
 }
 
 function mousePressed() {
@@ -29,7 +46,7 @@ function mousePressed() {
 function Food(x, y) {
     this.x = x;
     this.y = y;
-    this.color = color(255, 0, 0);
+    this.color = color('#B0E0E6');
     this.foodSize = 50;
     
     this.display = function() {
@@ -56,20 +73,24 @@ function panda(){
             var r2 = diameter / 2;
             if(r1 + r2 > d) {
                 feed.splice(i, 1);
+                feed.push(new Food(random(width), random(height)));
+                head+=10;
+                face -= 10;
+                score +=1;
             }
         }
     };
     
     this.display = function() {
-        var x = mouseX;
-        var y = mouseY;
+        x = mouseX;
+        y = mouseY;
         noStroke();
-        fill('white');
-        ellipse(x,y,200,200);
+        fill(face1,face2,face);
+        ellipse(x,y,head,head);
         fill('black');
         ellipse(x-50,y,90,100);
         ellipse(x+50,y,90,100);
-        fill('white');
+        fill(eyes);
         ellipse(x-30,y,30,30);
         ellipse(x+30,y,30,30);
         fill('black');
