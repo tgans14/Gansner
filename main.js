@@ -11,8 +11,7 @@ var score = 0;
 function setup(){
     createCanvas(windowWidth,windowHeight);
     pan = new panda();
-    
-     for(var i = 0; i < numFood; i++) {
+    for(var i = 0; i < numFood; i++) {
         feed.push(new Food(random(width), random(height)));
     }
 }
@@ -24,17 +23,21 @@ function draw(){
     for(var i = 0; i < feed.length; i++) {
         feed[i].display();
     }
-    if(head == 300){
+    if(head == 290){
         face = 50;
         face1 = 154;
         face2 = 205;
     }
-    if(head == 310){
+    if(head == 300){
         eyes = ('black');
-        head = 200;
-        score = "zombie panda";
+        fill('red');
+        textSize(50);
+        text("Zombie Panda", 400,200);
     }
-    fill(90);
+    if(head == 310){
+        head = 200;
+    }
+    fill(0); 
     textSize(40);
     text(score,100,100);
 }
